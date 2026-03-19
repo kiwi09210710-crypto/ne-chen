@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Users, TrendingUp, ArrowRight, BellRing, UserCheck, Zap, Target, BarChart2, List, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { ArrowLeft, Users, TrendingUp, ArrowRight, BellRing, UserCheck, Zap, Target, BarChart2, List, PanelLeftClose, PanelLeftOpen, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import lineImg from "../assets/line.jpg";
 
 export default function CaseCrm() {
-    const { t } = useLanguage();
+    const { t, lang, setLang } = useLanguage();
     const [activeSection, setActiveSection] = useState<string>("section-private-domain");
     const [showToc, setShowToc] = useState(false);
     const [tocDismissed, setTocDismissed] = useState(false);
@@ -62,6 +62,13 @@ export default function CaseCrm() {
                         <span className="text-primary">{t('caseCommon.titlePrefix')}</span>
                         <span className="text-foreground">{t('caseCommon.titleSuffix')}</span>
                     </span>
+                    <button
+                        onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+                        className="flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                        <Globe className="h-4 w-4" />
+                        <span>{lang === 'zh' ? 'EN' : '中'}</span>
+                    </button>
                 </div>
             </header>
 

@@ -257,6 +257,7 @@ export const zh = {
     expandToc: "展開目錄",
     viewPost: "原文網址",
     goal: "廣告目標：",
+    conversion: "轉換",
     product: "主推產品：",
     stats: {
       summary: "成效摘要",
@@ -454,6 +455,7 @@ export const zh = {
         angle1Desc: "以「被異味困擾的真實生活場景」引發 TA 情緒認同，促使點擊與購買",
         angle2Title: "社會認證型",
         angle2Desc: "透過 KOC 真實使用口碑，降低陌生受眾的購買疑慮",
+      },
     },
   },
   caseKoc: {
@@ -669,7 +671,6 @@ export const zh = {
         btnClose: "收起簡報",
         imgAlt: "Threads 平台經營規劃提案預覽",
         pdfTitle: "Threads 平台經營規劃簡報",
-      },
       },
     },
   },

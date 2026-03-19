@@ -257,6 +257,7 @@ export const en = {
     expandToc: "Expand TOC",
     viewPost: "Original Post",
     goal: "Ad Goal",
+    conversion: "Conversions",
     product: "Product",
     stats: {
       summary: "Performance Summary",
@@ -454,6 +455,7 @@ export const en = {
         angle1Desc: "Using 'real-life bothersome odor scenarios' to ignite TA emotional agreement, prompting clicks and purchases.",
         angle2Title: "Social Proof",
         angle2Desc: "Using authentic KOC reviews to lower purchase friction for cold audiences.",
+      },
     },
   },
   caseKoc: {
@@ -669,7 +671,6 @@ export const en = {
         btnClose: "Collapse Presentation",
         imgAlt: "Threads Platform Operation Planning Proposal Preview",
         pdfTitle: "Threads Platform Operation Planning Presentation",
-      },
       },
     },
   },

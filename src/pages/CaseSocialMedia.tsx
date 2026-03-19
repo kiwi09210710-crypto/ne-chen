@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, Target, TrendingUp, Users, MousePointerClick, Newspaper, X, Package, ExternalLink, Building2, List, Video, PlayCircle, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { ArrowLeft, ArrowRight, Target, TrendingUp, Users, MousePointerClick, Newspaper, X, Package, ExternalLink, Building2, List, Video, PlayCircle, PanelLeftClose, PanelLeftOpen, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import brandPostImage from "@/assets/case-brand-post.png";
@@ -12,7 +12,7 @@ import namingContestImage from "@/assets/case-naming-contest.png";
 import videoThumbnailImage from "@/assets/case-video-thumbnail.png";
 
 export default function CaseSocialMedia() {
-  const { t } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
   const [previewMedia, setPreviewMedia] = useState<{ type: "image" | "video"; src: string; alt: string } | null>(null);
   const [activeSection, setActiveSection] = useState<string>("section-wom");
   const [showToc, setShowToc] = useState(false);
@@ -76,6 +76,13 @@ export default function CaseSocialMedia() {
             <span className="text-primary">{t("caseCommon.titlePrefix")}</span>
             <span className="text-foreground">{t("caseCommon.titleSuffix")}</span>
           </span>
+          <button
+            onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+            className="flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            <Globe className="h-4 w-4" />
+            <span>{lang === 'zh' ? 'EN' : '中'}</span>
+          </button>
         </div>
       </header>
 

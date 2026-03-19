@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, FileText, ChevronDown } from "lucide-react";
+import { ArrowLeft, FileText, ChevronDown, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import proposalPreview from "@/assets/proposal-threads-preview.jpg";
 
 export default function CaseProposal() {
-    const { t } = useLanguage();
+    const { t, lang, setLang } = useLanguage();
     const [pdfOpen, setPdfOpen] = useState(false);
 
     return (
@@ -25,6 +25,13 @@ export default function CaseProposal() {
                         <span className="text-primary">{t('caseCommon.titlePrefix')}</span>
                         <span className="text-foreground">{t('caseCommon.titleSuffix')}</span>
                     </span>
+                    <button
+                        onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+                        className="flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                        <Globe className="h-4 w-4" />
+                        <span>{lang === 'zh' ? 'EN' : '中'}</span>
+                    </button>
                 </div>
             </header>
 

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Users, UserCheck, Award, ClipboardCheck, MessageCircle, ShieldCheck, AlertTriangle, ArrowRight, TrendingUp, Video, Eye, Heart, MousePointerClick, DollarSign, BarChart3, X } from "lucide-react";
+import { ArrowLeft, Users, UserCheck, Award, ClipboardCheck, MessageCircle, ShieldCheck, AlertTriangle, ArrowRight, TrendingUp, Video, Eye, Heart, MousePointerClick, DollarSign, BarChart3, X, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function CaseKolKoc() {
-    const { t } = useLanguage();
+    const { t, lang, setLang } = useLanguage();
     const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null);
 
     const stats = [
@@ -72,6 +72,13 @@ export default function CaseKolKoc() {
                         <span className="text-primary">{t('caseCommon.titlePrefix')}</span>
                         <span className="text-foreground">{t('caseCommon.titleSuffix')}</span>
                     </span>
+                    <button
+                        onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+                        className="flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                        <Globe className="h-4 w-4" />
+                        <span>{lang === 'zh' ? 'EN' : '中'}</span>
+                    </button>
                 </div>
             </header>
 

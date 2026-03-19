@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Target, TrendingUp, MousePointerClick, ExternalLink, X, Building2, Users, FlaskConical, Video, Image, Pencil } from "lucide-react";
+import { ArrowLeft, Target, TrendingUp, MousePointerClick, ExternalLink, X, Building2, Users, FlaskConical, Video, Image, Pencil, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import adPostImage from "@/assets/case-ad-optimization.png";
@@ -12,7 +12,7 @@ import adMaterialComic from "@/assets/ad-material-comic.jpg";
 
 export default function CaseAdOptimization() {
     const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null);
-    const { t } = useLanguage();
+    const { t, lang, setLang } = useLanguage();
 
     return (
         <div className="min-h-screen bg-background">
@@ -30,6 +30,13 @@ export default function CaseAdOptimization() {
                         <span className="text-primary">{t('caseCommon.titlePrefix')}</span>
                         <span className="text-foreground">{t('caseCommon.titleSuffix')}</span>
                     </span>
+                    <button
+                        onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+                        className="flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    >
+                        <Globe className="h-4 w-4" />
+                        <span>{lang === 'zh' ? 'EN' : '中'}</span>
+                    </button>
                 </div>
             </header>
 

@@ -9,7 +9,7 @@ import {
   Wrench,
   Heart,
   Target,
-
+  Globe
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import profileAvatar from "@/assets/profile-avatar.png";
@@ -63,7 +63,7 @@ const getHobbies = (t: (key: string) => string) => [
 ];
 
 export default function AboutMe() {
-  const { t } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
   const education = getEducation(t);
   const workExperience = getWorkExperience(t);
   const certifications = getCertifications(t);
@@ -84,6 +84,13 @@ export default function AboutMe() {
             <span className="text-primary">{t("about.titlePrefix")}</span>
             <span className="text-foreground">{t("about.titleSuffix")}</span>
           </span>
+          <button
+            onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+            className="flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            <Globe className="h-4 w-4" />
+            <span>{lang === 'zh' ? 'EN' : '中'}</span>
+          </button>
         </div>
       </header>
 
