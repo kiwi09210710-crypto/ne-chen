@@ -1,48 +1,58 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ShoppingCart, Package, BarChart2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ShoppingCart, BarChart2, Users, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const ecommerceItems = [
+const getEcommerceItems = (t: (key: string) => string) => [
   {
     id: "campaigns",
     icon: ShoppingCart,
-    title: "電商活動",
-    description: "規劃執行電商促銷活動，從節慶檔期到日常行銷",
+    title: t("home.ecommerce.items.campaigns.title"),
+    description: t("home.ecommerce.items.campaigns.desc"),
+    subtitle: t("home.ecommerce.items.campaigns.subtitle"),
     details: [
-      "雙11 / 週年慶活動企劃",
-      "限時優惠策略設計",
-      "會員專屬活動規劃",
-      "活動成效追蹤與優化",
+      t("home.ecommerce.items.campaigns.dt1"),
+      t("home.ecommerce.items.campaigns.dt2"),
+      t("home.ecommerce.items.campaigns.dt3"),
     ],
-  },
-  {
-    id: "pricing",
-    icon: Package,
-    title: "價格組合",
-    description: "設計產品組合與定價策略，提升客單價與轉換率",
-    details: [
-      "產品組合搭配設計",
-      "定價心理學應用",
-      "促銷折扣策略",
-      "競品價格分析",
-    ],
+    showCta: true,
+    ctaHref: "/case/ecommerce",
   },
   {
     id: "data",
     icon: BarChart2,
-    title: "數據分析",
-    description: "深入分析電商數據，洞察消費者行為與趨勢",
+    title: t("home.ecommerce.items.data.title"),
+    description: t("home.ecommerce.items.data.desc"),
+    subtitle: t("home.ecommerce.items.data.subtitle"),
     details: [
-      "銷售數據儀表板",
-      "消費者行為分析",
-      "轉換漏斗優化",
-      "預測模型建立",
+      t("home.ecommerce.items.data.dt1"),
+      t("home.ecommerce.items.data.dt2"),
+      t("home.ecommerce.items.data.dt3"),
     ],
+    showCta: true,
+    ctaHref: "/case/product-seo#section-ga-traffic",
+  },
+  {
+    id: "crm",
+    icon: Users,
+    title: t("home.ecommerce.items.crm.title"),
+    description: t("home.ecommerce.items.crm.desc"),
+    details: [
+      t("home.ecommerce.items.crm.dt1"),
+      t("home.ecommerce.items.crm.dt2"),
+      t("home.ecommerce.items.crm.dt3"),
+      t("home.ecommerce.items.crm.dt4"),
+    ],
+    showCta: true,
+    ctaHref: "/case/crm",
   },
 ];
 
 export const EcommerceSection = () => {
+  const { t } = useLanguage();
+  const ecommerceItems = getEcommerceItems(t);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -54,14 +64,31 @@ export const EcommerceSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-8 text-center"
         >
           <span className="mb-4 inline-block text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            E-commerce
+            {t("home.ecommerce.sectionTag")}
           </span>
-          <h2 className="section-title mb-4">電商企劃</h2>
+          <h2 className="section-title mb-4">{t("home.ecommerce.title")}</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            以數據驅動決策，打造高轉換率的電商體驗
+            {t("home.ecommerce.subtitle")}
+          </p>
+        </motion.div>
+
+        {/* Achievement Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-12 rounded-xl bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 p-4 text-center"
+        >
+          <p className="text-lg font-bold text-foreground mb-2">{t("home.ecommerce.bannerTitle")}</p>
+          <p className="text-base text-foreground flex flex-wrap justify-center items-center gap-x-2 gap-y-1">
+            <span>{t("home.ecommerce.banner1")} <span className="font-semibold text-primary">49%</span></span>
+            <span className="text-muted-foreground">|</span>
+            <span>{t("home.ecommerce.banner2")} <span className="font-semibold text-primary">119%</span></span>
+            <span className="text-muted-foreground">|</span>
+            <span><span className="font-semibold text-primary">31%</span> {t("home.ecommerce.banner3")}</span>
           </p>
         </motion.div>
 
@@ -90,23 +117,61 @@ export const EcommerceSection = () => {
 
                 {/* Content */}
                 <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
-                <p className="mb-5 text-sm text-muted-foreground">{item.description}</p>
+                <p className="mb-2 text-sm text-muted-foreground">{item.description}</p>
+                {item.subtitle && (
+                  <p className="mb-5 text-base font-bold text-primary">{item.subtitle}</p>
+                )}
+                {!item.subtitle && <div className="mb-3" />}
 
                 {/* Details list */}
                 <ul className="space-y-2.5">
-                  {item.details.map((detail, i) => (
-                    <motion.li
-                      key={detail}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.3, delay: 0.4 + index * 0.15 + i * 0.05 }}
-                      className="flex items-start gap-2 text-sm text-muted-foreground"
-                    >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
-                      {detail}
-                    </motion.li>
-                  ))}
+                  {item.details.map((detail, i) => {
+                    // Check if detail contains colon with percentage
+                    const colonMatch = detail.match(/^(.+[:：])(.+)$/);
+                    if (colonMatch && (colonMatch[2].includes('%') || colonMatch[2].includes('31'))) {
+                      return (
+                        <motion.li
+                          key={detail}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={isInView ? { opacity: 1, x: 0 } : {}}
+                          transition={{ duration: 0.3, delay: 0.4 + index * 0.15 + i * 0.05 }}
+                          className="flex items-start gap-2 text-sm text-muted-foreground"
+                        >
+                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                          {colonMatch[1]}<span className="font-bold text-primary">{colonMatch[2]}</span>
+                        </motion.li>
+                      );
+                    }
+                    return (
+                      <motion.li
+                        key={detail}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.3, delay: 0.4 + index * 0.15 + i * 0.05 }}
+                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary" />
+                        {detail}
+                      </motion.li>
+                    );
+                  })}
                 </ul>
+
+                {/* CTA Button */}
+                {item.showCta && (
+                  <div className="mt-4 flex justify-end">
+                    <Link
+                      to={item.ctaHref ?? "/"}
+                      className="group/cta flex items-center gap-1 text-sm font-medium text-primary transition-all duration-300 hover:gap-2"
+                    >
+                      <span className="relative">
+                        {t("home.ecommerce.viewCase")}
+                        <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-primary transition-all duration-300 group-hover/cta:w-full" />
+                      </span>
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                    </Link>
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

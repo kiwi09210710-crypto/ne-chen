@@ -1,37 +1,46 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Target, Lightbulb, User, GraduationCap, Briefcase } from "lucide-react";
 import profilePhoto from "@/assets/profile-avatar.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const HeroSection = () => {
+  const { t } = useLanguage();
+
   const profileInfo = [
     {
       icon: GraduationCap,
-      title: "學歷",
-      content: "中原大學企業管理學系（2022年畢業）",
+      title: t("home.hero.educationTitle"),
+      content: t("home.hero.educationContent"),
     },
     {
       icon: Briefcase,
-      title: "工作經歷",
-      subtitle: "正職共3年",
-      content: "1年行銷整合公司行銷企劃\n2年生技產業電商行銷企劃（在職中）",
+      title: t("home.hero.experienceTitle"),
+      subtitle: t("home.hero.experienceSubtitle"),
+      content: t("home.hero.experienceContent"),
     },
   ];
 
   const highlights = [
     {
       icon: User,
-      title: "人格特質",
-      items: ["快速適應力", "抗壓性", "喜歡挑戰新事物"],
+      title: t("home.hero.traitsTitle"),
+      items: [t("home.hero.traits1"), t("home.hero.traits2"), t("home.hero.traits3")],
     },
     {
       icon: Target,
-      title: "專業領域",
-      items: ["內容行銷", "社群行銷", "電商營運", "文案撰寫", "創意發想"],
+      title: t("home.hero.expertiseTitle"),
+      items: [
+        t("home.hero.expertise1"),
+        t("home.hero.expertise2"),
+        t("home.hero.expertise3"),
+        t("home.hero.expertise4"),
+        t("home.hero.expertise5"),
+      ],
     },
     {
       icon: Lightbulb,
-      title: "核心能力",
-      items: ["內容企劃", "數據分析"],
+      title: t("home.hero.skillsTitle"),
+      items: [t("home.hero.skills1"), t("home.hero.skills2")],
     },
   ];
 
@@ -72,7 +81,7 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
             >
-              Hi！我是 Alisa，個性友善有親和力，擅長將天馬行空的創意，轉化成可實際執行的企劃，能獨立完成從企劃發想到數據追蹤優化，並進行效益分析。
+              {t("home.hero.subtitle")}
             </motion.p>
           </div>
 
@@ -84,9 +93,9 @@ export const HeroSection = () => {
             className="relative flex-shrink-0 lg:mr-auto lg:ml-16"
           >
             <div className="h-72 w-56 overflow-hidden rounded-xl border border-border sm:h-80 sm:w-64 lg:h-96 lg:w-72">
-              <img 
-                src={profilePhoto} 
-                alt="Alisa 個人照片" 
+              <img
+                src={profilePhoto}
+                alt="Alisa 個人照片"
                 className="h-full w-full object-cover object-top"
               />
             </div>
@@ -167,10 +176,10 @@ export const HeroSection = () => {
           className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-10 sm:grid-cols-4"
         >
           {[
-            { value: "5+", label: "年經驗" },
-            { value: "50+", label: "專案完成" },
-            { value: "10+", label: "合作品牌" },
-            { value: "100%", label: "客戶滿意" },
+            { value: "3+", label: t("home.hero.statYears") },
+            { value: "100+", label: t("home.hero.statKol") },
+            { value: "20+", label: t("home.hero.statBrands") },
+            { value: "100+", label: t("home.hero.statArticles") },
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="mb-1 font-display text-2xl font-semibold text-foreground md:text-3xl">
@@ -194,7 +203,7 @@ export const HeroSection = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-muted-foreground"
         >
-          <span className="text-xs">向下滾動</span>
+          <span className="text-xs">{t("common.scrollDown")}</span>
           <ArrowDown className="h-4 w-4" />
         </motion.div>
       </motion.div>

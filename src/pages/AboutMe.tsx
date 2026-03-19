@@ -1,29 +1,73 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, User, TrendingUp, Award } from "lucide-react";
+import {
+  ArrowLeft,
+  User,
+  TrendingUp,
+  Award,
+  BadgeCheck,
+  Languages,
+  Wrench,
+  Heart,
+  Target,
+
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import profileAvatar from "@/assets/profile-avatar.png";
+import profileLife2 from "@/assets/profile-life2.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const timeline = [
+const getEducation = (t: (key: string) => string) => ({
+  icon: "🎓",
+  school: t("about.education.school"),
+  year: t("about.education.year"),
+});
+
+const getWorkExperience = (t: (key: string) => string) => [
   {
-    year: "現職",
-    title: "社群行銷專員",
-    company: "新創生技保健品牌",
-    description: "負責社群行銷、電商活動營運與廣告投放。工作範圍涵蓋業績與 ROAS 追蹤調整、專欄 SEO 優化、市場研究與商品定價及 KOC 行銷等，與行銷團隊及研發團隊跨部門溝通，持續推動品牌成長。",
-    achievements: [
-      "品牌社群粉絲成長超過 6 倍",
-      "LINE 官方好友數提升超過 10 倍",
-      "與行銷團隊帶動總業績提升至原本的 5 倍",
-    ],
+    icon: "💼",
+    company: t("about.experience.job1.company"),
+    title: t("about.experience.job1.title"),
+    duration: t("about.experience.job1.duration"),
+    description: t("about.experience.job1.desc"),
   },
   {
-    year: "過往",
-    title: "行銷企劃",
-    company: "行銷整合公司",
-    description: "共接觸超過 20 個品牌，累積豐富的文案經驗，接觸口碑行銷，學會因應不同產業需求調整行銷策略，有效協助不同客戶達成業務目標。",
+    icon: "💼",
+    company: t("about.experience.job2.company"),
+    title: t("about.experience.job2.title"),
+    duration: t("about.experience.job2.duration"),
+    description: t("about.experience.job2.desc"),
   },
 ];
 
+const getCertifications = (t: (key: string) => string) => [
+  t("about.certs.0"),
+  t("about.certs.1"),
+  t("about.certs.2"),
+  t("about.certs.3"),
+  t("about.certs.4"),
+];
+
+const aiTools = [
+  "ChatGPT",
+  "Claude",
+  "Gemini",
+  "Perplexity",
+  "NotebookLM",
+  "Antigravity",
+];
+
+const getHobbies = (t: (key: string) => string) => [
+  { emoji: "🎌", label: t("about.hobbies.anime") },
+  { emoji: "🐱", label: t("about.hobbies.cat") },
+  { emoji: "☕", label: t("about.hobbies.coffee") },
+];
+
 export default function AboutMe() {
+  const { t } = useLanguage();
+  const education = getEducation(t);
+  const workExperience = getWorkExperience(t);
+  const certifications = getCertifications(t);
+  const hobbies = getHobbies(t);
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -34,136 +78,246 @@ export default function AboutMe() {
             className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
           >
             <ArrowLeft className="h-5 w-5" />
-            <span className="font-medium">返回首頁</span>
+            <span className="font-medium">{t("about.backToHome")}</span>
           </Link>
           <span className="font-display text-lg font-semibold">
-            <span className="text-primary">行銷</span>
-            <span className="text-foreground">作品集</span>
+            <span className="text-primary">{t("about.titlePrefix")}</span>
+            <span className="text-foreground">{t("about.titleSuffix")}</span>
           </span>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="container mx-auto px-6 pb-20 pt-28">
-        {/* Title Section */}
+
+        {/* ① 頂部：個人名片區（三欄橫排） */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          className="mb-12"
         >
-          <span className="mb-4 inline-block text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            About Me
-          </span>
-          <h1 className="mb-4 text-3xl font-bold md:text-4xl">自我介紹</h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            結合創意思維與技術實力，為品牌創造有價值的數位體驗
-          </p>
+          <div className="glass-card p-6" style={{ maxHeight: "250px" }}>
+            <div className="flex items-center justify-center gap-6 h-full">
+
+              {/* 左欄：圓形大頭照 120×120 */}
+              <div className="shrink-0">
+                <div
+                  className="overflow-hidden rounded-full border-2 border-primary/20 shadow-lg"
+                  style={{ width: "120px", height: "120px" }}
+                >
+                  <img
+                    src={profileAvatar}
+                    alt={t("about.photoAlt")}
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* 中欄：文字資訊，約佔 50% */}
+              <div className="flex-1" style={{ maxWidth: "50%" }}>
+                <h1 className="mb-1 text-2xl font-bold">{t("about.name")}</h1>
+                <p className="mb-3 text-sm font-medium text-primary">
+                  {t("about.motto")}
+                </p>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  {t("about.intro")}
+                </p>
+              </div>
+
+              {/* 右欄：直式生活照 160×200 圓角 */}
+              <div className="shrink-0">
+                <div
+                  className="overflow-hidden rounded-2xl border-2 border-primary/20 shadow-lg"
+                  style={{ width: "160px", height: "200px" }}
+                >
+                  <img
+                    src={profileLife2}
+                    alt={t("about.lifeAlt")}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </div>
+
+            </div>
+          </div>
         </motion.div>
 
-        {/* Profile Card */}
+        {/* ② 核心資訊三欄橫排 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="mb-12"
         >
-          <div className="glass-card mx-auto max-w-3xl p-8">
-            <div className="flex flex-col items-center gap-6 md:flex-row">
-              <div className="flex h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-full bg-secondary">
-                <img
-                  src={profileAvatar}
-                  alt="陳恩頤"
-                  className="h-full w-full object-cover"
-                />
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* 卡片一：廣告證照 */}
+            <div className="glass-card bg-background p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                  <BadgeCheck className="h-5 w-5 text-primary" />
+                </div>
+                <h2 className="text-lg font-semibold">{t("about.certTitle")}</h2>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="mb-2 text-2xl font-semibold">陳恩頤</h2>
-                <p className="mb-4 text-muted-foreground">
-                  數位行銷專員 | 跨領域行銷實戰者
-                </p>
-                <p className="mb-4 leading-relaxed text-muted-foreground">
-                  對自我要求高，具備快速適應力與抗壓性，遇到挑戰時能主動學習並找出解決方法。
-                  具備團隊合作能力，擅長跨部門溝通。
-                </p>
-                <p className="leading-relaxed text-muted-foreground">
-                  相比同齡人，更重視自我精進並期待將所學發揮於實戰經驗中。
-                  在工作上不只達成工作任務，更能從中找到突破點，主動提出解決方案。
-                </p>
+              <div className="flex flex-wrap gap-2">
+                {certifications.map((cert) => (
+                  <span
+                    key={cert}
+                    className="rounded-full bg-secondary px-3 py-1.5 text-xs text-muted-foreground"
+                  >
+                    {cert}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* 卡片二：語文能力 */}
+            <div className="glass-card bg-background p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                  <Languages className="h-5 w-5 text-primary" />
+                </div>
+                <h2 className="text-lg font-semibold">{t("about.langTitle")}</h2>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground">
+                  {t("about.langTest")}
+                </span>
+                <span className="rounded-full bg-secondary px-3 py-1.5 text-xs font-bold text-foreground">
+                  {t("about.langScore")}
+                </span>
+              </div>
+            </div>
+
+            {/* 卡片三：擅長工具 */}
+            <div className="glass-card bg-background p-6">
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+                  <Wrench className="h-5 w-5 text-primary" />
+                </div>
+                <h2 className="text-lg font-semibold">{t("about.toolTitle")}</h2>
+              </div>
+              <p className="mb-3 text-xs text-muted-foreground">{t("about.aiToolsSubtitle")}</p>
+              <div className="flex flex-wrap gap-2">
+                {aiTools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full bg-secondary px-3 py-1.5 text-xs text-muted-foreground"
+                  >
+                    {tool}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Timeline Section */}
+        {/* 學歷與工作經歷 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mb-12"
         >
-          <div className="mb-8 flex items-center gap-3">
+          <div className="mb-6 flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
               <TrendingUp className="h-5 w-5 text-primary" />
             </div>
-            <h2 className="text-2xl font-semibold">學經歷</h2>
+            <h2 className="text-2xl font-semibold">{t("about.expTitle")}</h2>
           </div>
-          <div className="space-y-6">
-            {timeline.map((item, index) => (
-              <motion.div
-                key={item.year}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                className="glass-card bg-background p-6"
-              >
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <div className="mb-2 flex items-center gap-3">
-                      <span className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
-                        {item.year}
-                      </span>
-                      <h3 className="text-xl font-semibold">{item.title}</h3>
+          <div className="space-y-5">
+            {/* 學歷 */}
+            <div className="glass-card bg-background p-6">
+              <h3 className="mb-3 text-base font-semibold text-foreground">{t("about.eduTitle")}</h3>
+              <div className="flex items-baseline gap-2 text-muted-foreground">
+                <span className="text-lg">{education.icon}</span>
+                <span className="font-medium text-foreground">{education.school}</span>
+                <span className="text-sm">｜{education.year}</span>
+              </div>
+            </div>
+
+            {/* 工作經歷 */}
+            <div className="glass-card bg-background p-6">
+              <h3 className="mb-4 text-base font-semibold text-foreground">{t("about.workTitle")}</h3>
+              <div className="space-y-5">
+                {workExperience.map((job, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                  >
+                    <div className="mb-1 flex flex-wrap items-center gap-2">
+                      <span className="text-lg">{job.icon}</span>
+                      <span className="font-semibold text-foreground">{job.company}</span>
+                      <span className="text-sm text-muted-foreground">｜{job.title} — {job.duration}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.company}</p>
-                  </div>
-                </div>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{item.description}</p>
-                {item.achievements && (
-                  <div className="mt-4 space-y-2">
-                    <div className="flex items-center gap-2 text-sm font-medium text-primary">
-                      <Award className="h-4 w-4" />
-                      <span>重要成就</span>
-                    </div>
-                    <ul className="ml-6 list-disc space-y-1 text-sm text-muted-foreground">
-                      {item.achievements.map((achievement, i) => (
-                        <li key={i}>{achievement}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </motion.div>
-            ))}
+                    <p className="ml-7 text-sm leading-relaxed text-muted-foreground">
+                      {job.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
 
-        {/* Career Planning Section */}
+        {/* ③ 個人理念＋未來規劃 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-12"
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="mb-12"
+        >
+          <div className="glass-card bg-background p-8">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                <Target className="h-5 w-5 text-primary" />
+              </div>
+              <h2 className="text-2xl font-semibold">{t("about.visionTitle")}</h2>
+            </div>
+            <div className="space-y-4 leading-relaxed text-muted-foreground">
+              <p>
+                {t("about.vision1")}
+              </p>
+              <p>
+                {t("about.vision2")}
+              </p>
+              <p>
+                {t("about.vision3")}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ④ 興趣（輕鬆收尾） */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
         >
           <div className="glass-card bg-background p-8">
             <div className="mb-6 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <User className="h-5 w-5 text-primary" />
+                <Heart className="h-5 w-5 text-primary" />
               </div>
-              <h2 className="text-2xl font-semibold">個人理念</h2>
+              <h2 className="text-2xl font-semibold">{t("about.hobbyTitle")}</h2>
             </div>
-            <p className="leading-relaxed text-muted-foreground">
-              相比同齡人，我更重視自我精進並期待將所學發揮於實戰經驗中。
-              在工作上不只達成工作任務，更能從中找到突破點，主動提出解決方案，為公司解決現有問題，也為自己找到成就感。
-            </p>
+            <div className="flex flex-wrap justify-center gap-8 md:justify-start">
+              {hobbies.map((hobby) => (
+                <div
+                  key={hobby.label}
+                  className="flex flex-col items-center gap-2"
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary text-3xl shadow-sm transition-transform duration-200 hover:scale-110">
+                    {hobby.emoji}
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {hobby.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </main>
