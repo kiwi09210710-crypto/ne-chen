@@ -177,6 +177,8 @@ export default function CaseSocialMedia() {
                 <img
                   src="/fbfans.jpg"
                   alt={t("caseSocial.performance.fbAlt")}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -192,6 +194,8 @@ export default function CaseSocialMedia() {
                 <img
                   src="/linefans.jpg"
                   alt={t("caseSocial.performance.lineAlt")}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -273,6 +277,8 @@ export default function CaseSocialMedia() {
                 <img
                   src={socialPostImage}
                   alt={t("caseSocial.wom.imgAlt")}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -373,9 +379,9 @@ export default function CaseSocialMedia() {
               </div>
 
               {/* Split Layout: Text (Left) + Image (Right) */}
-              <div className="flex gap-4 flex-1 h-full min-h-0">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
                 {/* Left: Strategy Text */}
-                <div className="flex-1 overflow-y-auto pr-1">
+                <div className="flex-1">
                   <ul className="space-y-4 text-sm text-foreground">
                     <li className="flex flex-col gap-1.5">
                       <span className="font-bold text-primary text-base flex items-center gap-2">
@@ -414,7 +420,7 @@ export default function CaseSocialMedia() {
                 </div>
 
                 {/* Right: Brand Post Image */}
-                <div className="w-[45%] flex items-start justify-center bg-secondary/5 rounded-lg overflow-hidden pt-4">
+                <div className="w-full rounded-lg bg-secondary/5 pt-4 lg:w-[45%]">
                   <div
                     className="w-full cursor-zoom-in rounded-lg border border-border/50 shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                     onClick={() => setPreviewMedia({ type: "image", src: brandPostImage, alt: t("caseSocial.wom.brandPostAlt") })}
@@ -422,6 +428,8 @@ export default function CaseSocialMedia() {
                     <img
                       src={brandPostImage}
                       alt={t("caseSocial.wom.brandPostAlt")}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-auto object-contain"
                     />
                   </div>
@@ -492,9 +500,9 @@ export default function CaseSocialMedia() {
             </div>
 
             {/* Split Layout Container */}
-            <div className="flex gap-3 flex-1 min-h-0">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
               {/* Left Text Content */}
-              <div className="flex-1 flex flex-col overflow-y-auto pr-1">
+              <div className="flex-1">
                 <p className="text-muted-foreground mb-3 text-xs leading-relaxed">
                   {t("caseSocial.interactive.case1.desc")}
                 </p>
@@ -540,7 +548,7 @@ export default function CaseSocialMedia() {
               </div>
 
               {/* Right Image */}
-              <div className="w-[40%] flex flex-col items-center justify-start">
+              <div className="w-full lg:w-[40%]">
                 <div
                   className="w-full aspect-[4/5] cursor-zoom-in overflow-hidden rounded-lg border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                   onClick={() => setPreviewMedia({ type: "image", src: goddessLotteryImage, alt: t("caseSocial.interactive.case1.imgAlt") })}
@@ -548,6 +556,8 @@ export default function CaseSocialMedia() {
                   <img
                     src={goddessLotteryImage}
                     alt={t("caseSocial.interactive.case1.imgAlt")}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain bg-black/5"
                   />
                 </div>
@@ -592,9 +602,9 @@ export default function CaseSocialMedia() {
             </div>
 
             {/* Split Layout Container */}
-            <div className="flex gap-3 flex-1 min-h-0">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
               {/* Left Text Content */}
-              <div className="flex-1 flex flex-col overflow-y-auto pr-1">
+              <div className="flex-1">
                 <p className="text-muted-foreground mb-3 text-xs leading-relaxed">
                   {t("caseSocial.interactive.case2.desc")}
                 </p>
@@ -640,7 +650,7 @@ export default function CaseSocialMedia() {
               </div>
 
               {/* Right Image */}
-              <div className="w-[40%] flex flex-col items-center justify-start">
+              <div className="w-full lg:w-[40%]">
                 <div
                   className="w-full aspect-[4/5] cursor-zoom-in overflow-hidden rounded-lg border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                   onClick={() => setPreviewMedia({ type: "image", src: xnbayHardwareImage, alt: t("caseSocial.interactive.case2.imgAlt") })}
@@ -648,6 +658,8 @@ export default function CaseSocialMedia() {
                   <img
                     src={xnbayHardwareImage}
                     alt={t("caseSocial.interactive.case2.imgAlt")}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain bg-black/5"
                   />
                 </div>
@@ -694,9 +706,9 @@ export default function CaseSocialMedia() {
             </div>
 
             {/* Split Layout Container */}
-            <div className="flex gap-3 flex-1 min-h-0">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
               {/* Left Text Content */}
-              <div className="flex-1 flex flex-col overflow-y-auto pr-1">
+              <div className="flex-1">
                 <p className="text-muted-foreground mb-3 text-xs leading-relaxed">
                   {t("caseSocial.interactive.case3.desc")}
                 </p>
@@ -752,7 +764,7 @@ export default function CaseSocialMedia() {
               </div>
 
               {/* Right Image */}
-              <div className="w-[40%] flex flex-col items-center justify-start">
+              <div className="w-full lg:w-[40%]">
                 <div
                   className="w-full aspect-[4/5] cursor-zoom-in overflow-hidden rounded-lg border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                   onClick={() => setPreviewMedia({ type: "image", src: ancientMemeImage, alt: t("caseSocial.interactive.case3.imgAlt") })}
@@ -760,6 +772,8 @@ export default function CaseSocialMedia() {
                   <img
                     src={ancientMemeImage}
                     alt={t("caseSocial.interactive.case3.imgAlt")}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain bg-black/5"
                   />
                 </div>
@@ -803,9 +817,9 @@ export default function CaseSocialMedia() {
             </div>
 
             {/* Split Layout Container */}
-            <div className="flex gap-3 flex-1 min-h-0">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
               {/* Left Text Content */}
-              <div className="flex-1 flex flex-col overflow-y-auto pr-1">
+              <div className="flex-1">
                 <p className="text-muted-foreground mb-3 text-xs leading-relaxed">
                   {t("caseSocial.interactive.case4.desc")}
                 </p>
@@ -838,7 +852,7 @@ export default function CaseSocialMedia() {
                   <TrendingUp className="h-4 w-4 text-green-500" />
                   <span className="text-sm font-bold">{t("caseCommon.stats.summary")}</span>
                 </div>
-                <div className="w-full grid grid-cols-3 gap-2">
+                <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-3">
                   <div className="rounded-xl bg-secondary/50 p-3 text-center">
                     <div className="text-xs text-muted-foreground mb-1">{t("caseCommon.stats.likes")}</div>
                     <div className="text-lg font-bold text-primary">1,008</div>
@@ -865,7 +879,7 @@ export default function CaseSocialMedia() {
               </div>
 
               {/* Right Image */}
-              <div className="w-[40%] flex flex-col items-center justify-start">
+              <div className="w-full lg:w-[40%]">
                 <div
                   className="w-full aspect-[4/5] cursor-zoom-in overflow-hidden rounded-lg border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                   onClick={() => setPreviewMedia({ type: "image", src: namingContestImage, alt: t("caseSocial.interactive.case4.imgAlt") })}
@@ -873,6 +887,8 @@ export default function CaseSocialMedia() {
                   <img
                     src={namingContestImage}
                     alt={t("caseSocial.interactive.case4.imgAlt")}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain bg-black/5"
                   />
                 </div>
@@ -934,6 +950,8 @@ export default function CaseSocialMedia() {
               <img
                 src={videoThumbnailImage}
                 alt={t("caseSocial.video.imgAlt")}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
               {/* Play Button Overlay */}

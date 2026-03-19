@@ -198,24 +198,24 @@ export default function CaseKolKoc() {
                         <h2 className="text-3xl font-bold">{t('caseKoc.workflow.title')}</h2>
                     </div>
 
-                    <div className="mx-auto w-full overflow-x-auto">
-                        <div className="flex items-center justify-center gap-2 min-w-[800px] px-4">
+                    <div data-testid="koc-workflow-rail" className="mx-auto w-full px-0 sm:px-4">
+                        <div className="grid gap-3 sm:grid-cols-2 lg:flex lg:items-center lg:justify-center">
                             {workflow.map((item, index) => (
                                 <motion.div
                                     key={item.step}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                                    className="flex items-center"
+                                    className="flex items-center justify-center"
                                 >
-                                    <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-background px-4 py-5 shadow-sm transition-all duration-200 hover:border-purple-300 hover:shadow-md min-w-[130px]">
+                                    <div className="flex w-full flex-col items-center gap-3 rounded-xl border border-border bg-background px-4 py-5 text-center shadow-sm transition-all duration-200 hover:border-purple-300 hover:shadow-md lg:min-w-[130px]">
                                         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-purple-500 text-lg font-bold text-white shadow-md">
                                             {item.step}
                                         </div>
                                         <span className="text-sm font-semibold text-center leading-tight">{item.title}</span>
                                     </div>
                                     {index < workflow.length - 1 && (
-                                        <div className="flex w-8 shrink-0 items-center justify-center text-purple-300">
+                                        <div className="hidden w-8 shrink-0 items-center justify-center text-purple-300 lg:flex">
                                             <ArrowRight className="h-5 w-5" />
                                         </div>
                                     )}
@@ -241,7 +241,12 @@ export default function CaseKolKoc() {
                         </div>
                         <h2 className="text-3xl font-bold">{t('caseKoc.cases.title')}</h2>
                     </div>
-                    <p className="mb-8 text-muted-foreground ml-[52px]">{t('caseKoc.cases.desc')}</p>
+                    <p
+                        data-testid="koc-case-lead"
+                        className="mb-8 ml-0 text-muted-foreground sm:ml-[52px]"
+                    >
+                        {t('caseKoc.cases.desc')}
+                    </p>
                 </motion.div>
 
                 {/* Case 1: 女性保養開箱 */}
@@ -288,7 +293,7 @@ export default function CaseKolKoc() {
                         </p>
 
                         {/* Screenshot Image */}
-                        <div className="flex-1 flex flex-col mb-3 min-h-[300px] rounded-lg border border-border/50 overflow-hidden">
+                        <div className="mb-3 flex min-h-[220px] flex-1 flex-col overflow-hidden rounded-lg border border-border/50 sm:min-h-[300px]">
                             <img
                                 src="/koc-case1.jpg"
                                 alt={t('caseKoc.cases.case1.title')}
@@ -333,7 +338,7 @@ export default function CaseKolKoc() {
                         </div>
 
                         {/* Metrics Cards */}
-                        <div className="grid grid-cols-3 gap-2 mb-3">
+                        <div className="mb-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
                             <div className="rounded-lg bg-secondary/30 p-3 text-center">
                                 <div className="mb-1 flex items-center justify-center gap-1">
                                     <Eye className="h-3 w-3 text-muted-foreground" />
@@ -457,7 +462,7 @@ export default function CaseKolKoc() {
                         </p>
 
                         {/* Screenshot Image */}
-                        <div className="flex-1 flex flex-col mb-3 min-h-[300px] rounded-lg border border-border/50 overflow-hidden">
+                        <div className="mb-3 flex min-h-[220px] flex-1 flex-col overflow-hidden rounded-lg border border-border/50 sm:min-h-[300px]">
                             <img
                                 src="/koc-case2.jpg"
                                 alt={t('caseKoc.cases.case2.title')}
@@ -619,7 +624,7 @@ export default function CaseKolKoc() {
                         </p>
 
                         {/* Screenshot Image */}
-                        <div className="flex-1 flex flex-col mb-3 min-h-[300px] rounded-lg border border-border/50 overflow-hidden">
+                        <div className="mb-3 flex min-h-[220px] flex-1 flex-col overflow-hidden rounded-lg border border-border/50 sm:min-h-[300px]">
                             <img
                                 src="/koc-case3.jpg"
                                 alt={t('caseKoc.cases.case3.title')}
@@ -664,7 +669,7 @@ export default function CaseKolKoc() {
                         </div>
 
                         {/* Metrics Cards */}
-                        <div className="grid grid-cols-3 gap-2 mb-4">
+                        <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
                             <div className="rounded-lg bg-secondary/30 p-3 text-center">
                                 <div className="mb-1 flex items-center justify-center gap-1">
                                     <MousePointerClick className="h-3 w-3 text-muted-foreground" />

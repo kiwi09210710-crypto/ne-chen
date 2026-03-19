@@ -104,48 +104,50 @@ export default function AboutMe() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <div className="glass-card p-6" style={{ maxHeight: "250px" }}>
-            <div className="flex items-center justify-center gap-6 h-full">
-
-              {/* 左欄：圓形大頭照 120×120 */}
-              <div className="shrink-0">
-                <div
-                  className="overflow-hidden rounded-full border-2 border-primary/20 shadow-lg"
-                  style={{ width: "120px", height: "120px" }}
-                >
+          <div className="glass-card overflow-hidden p-5 sm:p-6">
+            <div
+              data-testid="about-hero-card"
+              className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+            >
+              {/* 左欄：圓形大頭照 */}
+              <div className="mx-auto shrink-0 lg:mx-0">
+                <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/20 shadow-lg sm:h-28 sm:w-28 lg:h-32 lg:w-32">
                   <img
                     src={profileAvatar}
                     alt={t("about.photoAlt")}
+                    loading="eager"
+                    decoding="async"
                     className="h-full w-full object-cover object-top"
                   />
                 </div>
               </div>
 
-              {/* 中欄：文字資訊，約佔 50% */}
-              <div className="flex-1" style={{ maxWidth: "50%" }}>
-                <h1 className="mb-1 text-2xl font-bold">{t("about.name")}</h1>
-                <p className="mb-3 text-sm font-medium text-primary">
+              {/* 中欄：文字資訊 */}
+              <div
+                data-testid="about-intro-block"
+                className="order-3 text-center lg:order-2 lg:max-w-2xl lg:flex-1 lg:text-left"
+              >
+                <h1 className="mb-2 text-2xl font-bold sm:text-3xl">{t("about.name")}</h1>
+                <p className="mb-3 text-sm font-medium text-primary sm:text-base">
                   {t("about.motto")}
                 </p>
-                <p className="text-xs leading-relaxed text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
                   {t("about.intro")}
                 </p>
               </div>
 
-              {/* 右欄：直式生活照 160×200 圓角 */}
-              <div className="shrink-0">
-                <div
-                  className="overflow-hidden rounded-2xl border-2 border-primary/20 shadow-lg"
-                  style={{ width: "160px", height: "200px" }}
-                >
+              {/* 右欄：直式生活照 */}
+              <div className="order-2 mx-auto w-full max-w-[220px] shrink-0 lg:order-3 lg:mx-0 lg:max-w-[190px]">
+                <div className="aspect-[4/5] overflow-hidden rounded-2xl border-2 border-primary/20 shadow-lg">
                   <img
                     src={profileLife2}
                     alt={t("about.lifeAlt")}
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
               </div>
-
             </div>
           </div>
         </motion.div>

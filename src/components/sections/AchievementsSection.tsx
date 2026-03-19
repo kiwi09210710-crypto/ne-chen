@@ -140,14 +140,26 @@ export const AchievementsSection = () => {
                   className="group relative overflow-hidden rounded-lg border border-border bg-secondary/30 transition-colors hover:border-primary/40 cursor-zoom-in"
                   onClick={() => setPreviewImage({ src: n8nWorkflowDemo, alt: t("home.achievements.demoImgAlt1") })}
                 >
-                  <img src={n8nWorkflowDemo} alt={t("home.achievements.demoImgAlt1")} className="w-full aspect-[16/10] object-cover transition-transform duration-200 hover:scale-105" />
+                  <img
+                    src={n8nWorkflowDemo}
+                    alt={t("home.achievements.demoImgAlt1")}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full aspect-[16/10] object-cover transition-transform duration-200 hover:scale-105"
+                  />
                 </div>
                 {/* Demo Image 2 */}
                 <div
                   className="group relative overflow-hidden rounded-lg border border-border bg-secondary/30 transition-colors hover:border-primary/40 cursor-zoom-in"
                   onClick={() => setPreviewImage({ src: n8nCompetitorDemo, alt: t("home.achievements.demoImgAlt2") })}
                 >
-                  <img src={n8nCompetitorDemo} alt={t("home.achievements.demoImgAlt2")} className="w-full aspect-[16/10] object-cover transition-transform duration-200 hover:scale-105" />
+                  <img
+                    src={n8nCompetitorDemo}
+                    alt={t("home.achievements.demoImgAlt2")}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full aspect-[16/10] object-cover transition-transform duration-200 hover:scale-105"
+                  />
                 </div>
               </motion.div>
             </div>

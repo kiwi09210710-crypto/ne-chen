@@ -214,7 +214,10 @@ export default function CaseProductSeo() {
                             {t('caseProduct.landing.title')}
                         </h2>
                     </div>
-                    <p className="text-muted-foreground pl-[52px]">
+                    <p
+                        data-testid="case-product-section-lead"
+                        className="pl-0 text-muted-foreground sm:pl-[52px]"
+                    >
                         {t('caseProduct.landing.subtitle')}
                     </p>
                 </motion.div>
@@ -344,6 +347,8 @@ export default function CaseProductSeo() {
                                             <img
                                                 src={caseItem.previewImage}
                                                 alt={caseItem.title}
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="w-full max-h-[360px] object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
                                             />
 
@@ -378,7 +383,7 @@ export default function CaseProductSeo() {
                             {t('caseProduct.seo.title')}
                         </h2>
                     </div>
-                    <p className="text-muted-foreground pl-[52px]">
+                    <p className="pl-0 text-muted-foreground sm:pl-[52px]">
                         {t('caseProduct.seo.subtitle')}
                     </p>
                 </motion.div>
@@ -408,6 +413,8 @@ export default function CaseProductSeo() {
                                     <img
                                         src={img}
                                         alt={`${t('caseProduct.seo.aiSummary.imgAlt')} ${idx + 1}`}
+                                        loading="lazy"
+                                        decoding="async"
                                         className="w-full h-auto max-h-[200px] object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
@@ -447,7 +454,7 @@ export default function CaseProductSeo() {
                                     className="group relative cursor-zoom-in overflow-hidden rounded-xl border border-border transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30"
                                     onClick={() => setPreviewImage({ src: gaChartImg, alt: t('caseProduct.seo.gaTraffic.imgAlt') })}
                                 >
-                                    <img src={gaChartImg} alt={t('caseProduct.seo.gaTraffic.imgAlt')} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                                    <img src={gaChartImg} alt={t('caseProduct.seo.gaTraffic.imgAlt')} loading="lazy" decoding="async" className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
                                         <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
                                             <Search className="h-4 w-4" />
@@ -501,7 +508,7 @@ export default function CaseProductSeo() {
 
                         {/* Full-width Table Image */}
                         <div className="overflow-hidden rounded-xl border border-border">
-                            <img src={gaTableImg} alt={t('caseProduct.seo.gaTraffic.tableAlt')} className="w-full h-auto object-cover" />
+                            <img src={gaTableImg} alt={t('caseProduct.seo.gaTraffic.tableAlt')} loading="lazy" decoding="async" className="w-full h-auto object-cover" />
                         </div>
                     </div>
                 </motion.div>
@@ -531,7 +538,7 @@ export default function CaseProductSeo() {
                                     className="group relative cursor-zoom-in overflow-hidden rounded-xl border border-border transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30"
                                     onClick={() => setPreviewImage({ src: nadhArticlesImg, alt: t('caseProduct.seo.gaSeoCase.imgAlt') })}
                                 >
-                                    <img src={nadhArticlesImg} alt={t('caseProduct.seo.gaSeoCase.imgAlt')} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                                    <img src={nadhArticlesImg} alt={t('caseProduct.seo.gaSeoCase.imgAlt')} loading="lazy" decoding="async" className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
                                         <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
                                             <Search className="h-4 w-4" />
@@ -598,7 +605,7 @@ export default function CaseProductSeo() {
                                     className="group relative cursor-zoom-in overflow-hidden rounded-xl border border-border transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30"
                                     onClick={() => setPreviewImage({ src: kolPageviewsImg, alt: t('caseProduct.seo.gaKol.pageviewsAlt') })}
                                 >
-                                    <img src={kolPageviewsImg} alt={t('caseProduct.seo.gaKol.pageviewsAlt')} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                                    <img src={kolPageviewsImg} alt={t('caseProduct.seo.gaKol.pageviewsAlt')} loading="lazy" decoding="async" className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
                                         <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
                                             <Search className="h-4 w-4" />
@@ -629,7 +636,7 @@ export default function CaseProductSeo() {
                                     className="group relative cursor-zoom-in overflow-hidden rounded-xl border border-border transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30"
                                     onClick={() => setPreviewImage({ src: kolAdsImg, alt: t('caseProduct.seo.gaKol.adsAlt') })}
                                 >
-                                    <img src={kolAdsImg} alt={t('caseProduct.seo.gaKol.adsAlt')} className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                                    <img src={kolAdsImg} alt={t('caseProduct.seo.gaKol.adsAlt')} loading="lazy" decoding="async" className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                                     <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
                                         <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-gray-800 opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
                                             <Search className="h-4 w-4" />

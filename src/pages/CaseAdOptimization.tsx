@@ -112,7 +112,7 @@ export default function CaseAdOptimization() {
                         </div>
 
                         {/* CTR Stats - 3 columns in one row */}
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                             <div className="rounded-lg border border-border bg-background p-4 text-center">
                                 <div className="mb-1 text-xs text-muted-foreground">{t('caseCommon.stats.ctr')}</div>
                                 <div className="text-2xl font-bold text-primary">6.72%</div>
@@ -206,9 +206,9 @@ export default function CaseAdOptimization() {
                         </div>
 
                         {/* Split Layout Container */}
-                        <div className="flex gap-3 flex-1 min-h-0">
+                        <div className="flex flex-1 flex-col gap-4 lg:min-h-0 lg:flex-row">
                             {/* Left Text Content */}
-                            <div className="flex-1 flex flex-col overflow-y-auto pr-1">
+                            <div className="flex flex-1 flex-col">
                                 <p className="text-muted-foreground mb-3 text-xs leading-relaxed">
                                     {t('caseAd.otherCases.hotel.desc')}
                                 </p>
@@ -272,7 +272,10 @@ export default function CaseAdOptimization() {
                             </div>
 
                             {/* Right Image */}
-                            <div className="w-[50%] flex flex-col items-stretch">
+                            <div
+                                data-testid="ad-case-hotel-image"
+                                className="w-full flex flex-col items-stretch lg:w-[50%]"
+                            >
                                 <div
                                     className="w-full h-full cursor-zoom-in overflow-hidden rounded-lg border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                                     onClick={() => setPreviewImage({ src: hotelPromoImage, alt: t('caseAd.otherCases.hotel.imgAlt') })}
@@ -311,9 +314,9 @@ export default function CaseAdOptimization() {
                         </div>
 
                         {/* Split Layout Container */}
-                        <div className="flex gap-3 flex-1 min-h-0">
+                        <div className="flex flex-1 flex-col gap-4 lg:min-h-0 lg:flex-row">
                             {/* Left Text Content */}
-                            <div className="flex-1 flex flex-col overflow-y-auto pr-1">
+                            <div className="flex flex-1 flex-col">
                                 <p className="text-muted-foreground mb-3 text-xs leading-relaxed">
                                     {t('caseAd.otherCases.kids.desc')}
                                 </p>
@@ -367,7 +370,10 @@ export default function CaseAdOptimization() {
                             </div>
 
                             {/* Right Image */}
-                            <div className="w-[40%] flex flex-col items-center justify-start">
+                            <div
+                                data-testid="ad-case-kids-image"
+                                className="w-full flex flex-col items-center justify-start lg:w-[40%]"
+                            >
                                 <div
                                     className="w-full cursor-zoom-in overflow-hidden rounded-lg border border-border shadow-sm transition-transform duration-200 hover:scale-[1.02]"
                                     onClick={() => setPreviewImage({ src: kidsEventImage, alt: t('caseAd.otherCases.kids.imgAlt') })}
@@ -459,7 +465,7 @@ export default function CaseAdOptimization() {
                             {t('caseAd.testing.leftCard.typesTitle')}
                         </h4>
 
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                             {/* Card 1 — 影片素材 */}
                             <div className="rounded-xl border border-border bg-background overflow-hidden flex flex-col">
                                 <div
@@ -527,7 +533,7 @@ export default function CaseAdOptimization() {
                         </div>
 
                         {/* 3 Metric Boxes */}
-                        <div className="grid grid-cols-3 gap-3 mb-4">
+                        <div className="mb-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
                             <div className="rounded-lg border border-border bg-background p-4 text-center">
                                 <div className="mb-1 text-xs text-muted-foreground">{t('caseAd.testing.rightCard.maxRoas')}</div>
                                 <div className="text-2xl font-bold text-primary">3.78</div>

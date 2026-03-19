@@ -45,7 +45,10 @@ export const HeroSection = () => {
   ];
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-44">
+    <section
+      data-testid="home-hero"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 sm:pt-32 lg:pt-44"
+    >
       {/* Subtle background pattern */}
       <div className="pointer-events-none absolute inset-0">
         <div
@@ -59,7 +62,7 @@ export const HeroSection = () => {
 
       <div className="container relative z-10 mx-auto px-6">
         {/* Top Section - Title and Photo */}
-        <div className="flex flex-col items-start gap-12 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col items-start gap-8 sm:gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           {/* Left Content */}
           <div className="max-w-2xl text-left">
             {/* Main Title */}
@@ -67,7 +70,8 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="mb-12 font-display text-5xl font-semibold tracking-wide text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
+              data-testid="home-hero-title"
+              className="mb-6 font-display text-4xl font-semibold tracking-wide text-foreground sm:mb-8 sm:text-6xl md:text-7xl lg:mb-12 lg:text-8xl"
             >
               Marketing
               <br />
@@ -79,7 +83,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+              className="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
             >
               {t("home.hero.subtitle")}
             </motion.p>
@@ -90,12 +94,18 @@ export const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative flex-shrink-0 lg:mr-auto lg:ml-16"
+            className="relative mx-auto flex-shrink-0 self-center lg:mr-auto lg:ml-16 lg:self-auto"
           >
-            <div className="h-72 w-56 overflow-hidden rounded-xl border border-border sm:h-80 sm:w-64 lg:h-96 lg:w-72">
+            <div
+              data-testid="home-hero-photo"
+              className="h-60 w-48 overflow-hidden rounded-xl border border-border sm:h-72 sm:w-56 lg:h-96 lg:w-72"
+            >
               <img
                 src={profilePhoto}
                 alt="Alisa 個人照片"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
                 className="h-full w-full object-cover object-top"
               />
             </div>
@@ -196,7 +206,8 @@ export const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        data-testid="home-hero-scroll"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:flex"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
