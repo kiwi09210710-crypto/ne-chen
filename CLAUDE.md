@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 專案概覽
 
-這是一個使用 Lovable.dev 建立的行銷作品集網站，展示 Alisa 的專業經歷、案例與成就。
+這是一個行銷作品集網站，展示 Alisa 的專業經歷、案例與成就。
 
 **技術堆疊**: React 18 + TypeScript + Vite + shadcn/ui + Tailwind CSS + Framer Motion
 
@@ -147,7 +147,6 @@ const isInView = useInView(ref, { once: true, amount: 0.3 });
 
 - 開發伺服器：host `::`，port `8080`
 - 路徑別名：`@` → `./src`
-- 開發模式啟用 `lovable-tagger` 元件標記
 
 ## 狀態管理
 
